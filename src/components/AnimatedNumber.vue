@@ -60,12 +60,12 @@ export default {
       return parseFloat(this.value)
     },
 
-    // will range from 20 => 200
+    // will range from 60 => 150
     endTimeInterval: function () {
       return 50 + 100 / this.speed
     },
 
-    // will range from 2 => 20
+    // will range from 2 => 11
     changeDecayRatio: function () {
       return 1 + (10 / this.speed)
     }
