@@ -42,11 +42,11 @@ export default {
     // minimum and maximum time update intervals
     // we will go from minimum to maximum time at a rate scaled by
     // the inverse of change
-    'minIntervalTime': {
+    'startTimeInterval': {
       type: Number,
       default: 20
     },
-    'maxIntervalTime': {
+    'endTimeInterval': {
       type: Number,
       default: 50
     }
@@ -90,7 +90,7 @@ export default {
 
         // timeout is minInterval plus the difference to max interval, scaled by the
         // inverse of change. Thus we will begin at minInterval and eventually reach maxInterval
-        let timeOut = this.minIntervalTime + (this.maxIntervalTime - this.minIntervalTime) / change
+        let timeOut = this.startTimeInterval + (this.endTimeInterval - this.startTimeInterval) / change
         window.setTimeout(this.updateDisplayValue, timeOut)
       }
     }
@@ -107,7 +107,7 @@ export default {
   watch: {
     value: function () {
       if (isNaN(this.displayValue)) { this.displayValue = 0}
-      window.setTimeout(this.updateDisplayValue, this.minIntervalTime)
+      window.setTimeout(this.updateDisplayValue, this.startTimeInterval)
       this.$emit('started-update')
     }
   }

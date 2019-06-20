@@ -11,12 +11,12 @@
       <div id="page-content">
         <div id="controls">
           <div class="slider">
-            <span>minIntervalTime</span>
-            <el-slider v-model="minIntervalTime" :min="0" :max="100"></el-slider>
+            <span>startTimeInterval</span>
+            <el-slider v-model="startTimeInterval" :min="0" :max="100"></el-slider>
           </div>
           <div class="slider">
-            <span>maxIntervalTime</span>
-            <el-slider v-model="maxIntervalTime" :min="50" :max="400"></el-slider>
+            <span>endTimeInterval</span>
+            <el-slider v-model="endTimeInterval" :min="50" :max="400"></el-slider>
           </div>
           <div class="slider">
             <span>changeDecayRatio</span>
@@ -31,8 +31,8 @@
         <div id="animated-number">
           <AnimatedNumber
             :value='parseFloat(value)'
-            :minIntervalTime="minIntervalTime"
-            :maxIntervalTime="maxIntervalTime"
+            :startTimeInterval="startTimeInterval"
+            :endTimeInterval="endTimeInterval"
             :changeDecayRatio="changeDecayRatio"
           />
         </div>
@@ -51,8 +51,8 @@ export default {
     return {
       value: 0,
       editableValue: 1324,
-      minIntervalTime: 40,
-      maxIntervalTime: 170,
+      startTimeInterval: 40,
+      endTimeInterval: 170,
       changeDecayRatio: 5
     };
   },
