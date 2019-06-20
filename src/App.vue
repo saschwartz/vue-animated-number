@@ -5,7 +5,7 @@
     </el-header>
     <el-main>
       <p>Input a number below and press submit to watch the animation change.</p>
-      <p>You can also change the animation speed</p>.
+      <p>You can also change the animation speed.</p>
 
       <!-- form controls -->
       <div id="page-content">
