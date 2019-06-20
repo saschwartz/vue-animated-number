@@ -42,9 +42,10 @@
 </template>
 
 <script>
+import AnimatedNumber from "./components/AnimatedNumber.vue";
 export default {
   components: {
-    AnimatedNumber: () => import('./components/AnimatedNumber')
+    AnimatedNumber
   },
   data: function () {
     return {
