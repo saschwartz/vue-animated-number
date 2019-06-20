@@ -5,21 +5,28 @@
     </el-header>
     <el-main>
       <p>Input a number below and press submit to watch the animation change.</p>
-      <p>You can also change the timing and change rate parameters to adjust the animation.</p>
+      <p>You can also change the timing and change rate parameters to adjust the animation. The available control parameters are:</p>
+      <div id='variable-descriptions'>
+        <ul>
+          <li><strong>startTimeInterval</strong> - controls the initial transition speed. The shorter the interval, the faster the numbers will tick to begin with.</li>
+          <li><strong>endTimeInterval</strong> - controls the final transition speed. The shorter the interval, the faster the numbers will tick at the end of the animation.</li>
+          <li><strong>changeDecayRatio</strong> - controls how big the steps are when the number changes. With each step, the change is divided by this number. </li>
+        </ul>
+      </div>
 
       <!-- form controls -->
       <div id="page-content">
         <div id="controls">
           <div class="slider">
-            <span>Starting time interval (ms)</span>
+            <span>startTimeInterval</span>
             <el-slider v-model="startTimeInterval" :min="0" :max="100"></el-slider>
           </div>
           <div class="slider">
-            <span>Ending time interval (ms)</span>
+            <span>endTimeInterval</span>
             <el-slider v-model="endTimeInterval" :min="50" :max="400"></el-slider>
           </div>
           <div class="slider">
-            <span>Decay ratio of change</span>
+            <span>changeDecayRatio</span>
             <el-slider v-model="changeDecayRatio" :min="2" :max="10"></el-slider>
           </div>
           <el-input placeholder="Input a new value" v-model="editableValue"></el-input>
@@ -88,7 +95,7 @@ export default {
 
 .el-main {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 650px;
 }
 
 #page-content {
@@ -100,6 +107,11 @@ export default {
 #controls {
   text-align: center;
   width: 100%;
+}
+
+#variable-descriptions {
+  text-align: left;
+  font-size: 0.9rem;
 }
 
 .el-input {
