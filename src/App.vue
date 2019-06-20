@@ -4,37 +4,37 @@
       <h2>Vue Animated Number</h2>
     </el-header>
     <el-main>
-
       <p>Input a number below and press submit to watch the animation change.</p>
       <p>You can also change the timing and change rate parameters to adjust the animation.</p>
 
       <!-- form controls -->
       <div id="page-content">
         <div id="controls">
-          <div class='slider'>
+          <div class="slider">
             <span>minIntervalTime</span>
-            <el-slider v-model="minIntervalTime" :min='0' :max='100'></el-slider>
+            <el-slider v-model="minIntervalTime" :min="0" :max="100"></el-slider>
           </div>
           <div class="slider">
             <span>maxIntervalTime</span>
-            <el-slider v-model="maxIntervalTime" :min='50' :max='400'></el-slider>
+            <el-slider v-model="maxIntervalTime" :min="50" :max="400"></el-slider>
           </div>
           <div class="slider">
             <span>changeDecayRatio</span>
-            <el-slider v-model="changeDecayRatio" :min='2' :max='10'></el-slider>
+            <el-slider v-model="changeDecayRatio" :min="2" :max="10"></el-slider>
           </div>
           <div id="animation-submit">
-            <el-input placeholder="Input a new value" v-model.number='editableValue'></el-input>
-            <el-button type='primary' icon="el-icon-refresh" @click='updateValue()'></el-button>
+            <el-input placeholder="Input a new value" v-model.number="editableValue"></el-input>
+            <el-button type="primary" icon="el-icon-refresh" @click="updateValue()"></el-button>
           </div>
         </div>
         <!-- the animated number component -->
-        <div id='animated-number'>
+        <div id="animated-number">
           <AnimatedNumber
-            :value='value'
-            :minIntervalTime='minIntervalTime'
-            :maxIntervalTime='maxIntervalTime'
-            :changeDecayRatio='changeDecayRatio' />
+            :value="value"
+            :minIntervalTime="minIntervalTime"
+            :maxIntervalTime="maxIntervalTime"
+            :changeDecayRatio="changeDecayRatio"
+          />
         </div>
       </div>
     </el-main>
@@ -42,33 +42,34 @@
 </template>
 
 <script>
+import AnimatedNumber from "./components/AnimatedNumber.vue";
 export default {
   components: {
-    AnimatedNumber: () => import('./components/AnimatedNumber')
+    AnimatedNumber
   },
-  data: function () {
+  data: function() {
     return {
       value: 0,
       editableValue: 1324,
       minIntervalTime: 40,
       maxIntervalTime: 170,
       changeDecayRatio: 5
-    }
+    };
   },
   methods: {
-    updateValue () {
-      this.value = this.editableValue
+    updateValue() {
+      this.value = this.editableValue;
     }
   },
-  mounted () {
-    window.setTimeout(this.updateValue, 600)
+  mounted() {
+    window.setTimeout(this.updateValue, 600);
   }
-}
+};
 </script>
 
 <style lang='scss'>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -105,7 +106,7 @@ export default {
 
 #animation-submit {
   display: flex;
-  .el-button{
+  .el-button {
     margin-left: 5px;
   }
 }
