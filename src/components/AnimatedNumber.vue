@@ -18,10 +18,10 @@ export default {
     'value': Number,
 
     // formatter function for the value, default is
-    // to put commas every 3 digits
+    // to put commas every 3 digits and round number to 2 dp
     'formatter': {
       type: Function,
-      default: x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      default: x => (Math.round(x * 100) / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     },
 
     // whether or not to render the value as html

@@ -23,14 +23,14 @@
             <el-slider v-model="changeDecayRatio" :min="2" :max="10"></el-slider>
           </div>
           <div id="animation-submit">
-            <el-input placeholder="Input a new value" v-model.number="editableValue"></el-input>
+            <el-input placeholder="Input a new value" v-model="editableValue"></el-input>
             <el-button type="primary" icon="el-icon-refresh" @click="updateValue()"></el-button>
           </div>
         </div>
         <!-- the animated number component -->
         <div id="animated-number">
           <AnimatedNumber
-            :value="value"
+            :value='parseFloat(value)'
             :minIntervalTime="minIntervalTime"
             :maxIntervalTime="maxIntervalTime"
             :changeDecayRatio="changeDecayRatio"
