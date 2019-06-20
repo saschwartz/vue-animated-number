@@ -2,7 +2,7 @@
 
 A fun animated number component for [Vue JS](https://vuejs.org/).
 
-See the [demo](https://qscwm.codesandbox.io/).
+See the [demo](https://8ckm7.codesandbox.io/).
 
 ## Running Locally
 
