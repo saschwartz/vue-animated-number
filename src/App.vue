@@ -11,21 +11,19 @@
       <div id="page-content">
         <div id="controls">
           <div class="slider">
-            <span>startTimeInterval</span>
+            <span>Starting time interval (ms)</span>
             <el-slider v-model="startTimeInterval" :min="0" :max="100"></el-slider>
           </div>
           <div class="slider">
-            <span>endTimeInterval</span>
+            <span>Ending time interval (ms)</span>
             <el-slider v-model="endTimeInterval" :min="50" :max="400"></el-slider>
           </div>
           <div class="slider">
-            <span>changeDecayRatio</span>
+            <span>Decay ratio of change</span>
             <el-slider v-model="changeDecayRatio" :min="2" :max="10"></el-slider>
           </div>
-          <div id="animation-submit">
-            <el-input placeholder="Input a new value" v-model="editableValue"></el-input>
-            <el-button type="primary" @click="updateValue()">Animate</el-button>
-          </div>
+          <el-input placeholder="Input a new value" v-model="editableValue"></el-input>
+          <el-button type="primary" @click="updateValue()">Animate</el-button>
         </div>
         <!-- the animated number component -->
         <div id="animated-number">
@@ -104,11 +102,14 @@ export default {
   width: 100%;
 }
 
-#animation-submit {
-  display: flex;
-  .el-button {
-    margin-left: 5px;
-  }
+.el-input {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.el-button {
+  width: 100%;
 }
 
 #animated-number {
