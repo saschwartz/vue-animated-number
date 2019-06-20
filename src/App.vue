@@ -24,7 +24,7 @@
           </div>
           <div id="animation-submit">
             <el-input placeholder="Input a new value" v-model="editableValue"></el-input>
-            <el-button type="primary" icon="el-icon-refresh" @click="updateValue()"></el-button>
+            <el-button type="primary" @click="updateValue()">Animate</el-button>
           </div>
         </div>
         <!-- the animated number component -->

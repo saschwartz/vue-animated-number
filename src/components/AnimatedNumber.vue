@@ -102,8 +102,11 @@ export default {
   },
 
   // call the update function when value changes
+  // also handle the case where we're going from an invalid value
+  // to a valid one, by setting displayValue to 0
   watch: {
     value: function () {
+      if (isNaN(this.displayValue)) { this.displayValue = 0}
       window.setTimeout(this.updateDisplayValue, this.minIntervalTime)
       this.$emit('started-update')
     }
