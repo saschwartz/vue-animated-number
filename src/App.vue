@@ -5,41 +5,20 @@
     </el-header>
     <el-main>
       <p>Input a number below and press submit to watch the animation change.</p>
-      <p>You can also change the timing and change rate parameters to adjust the animation. The available control parameters are:</p>
-      <div id='variable-descriptions'>
-        <ul>
-          <li><strong>startTimeInterval</strong> - controls the initial transition speed. The shorter the interval, the faster the numbers will tick to begin with.</li>
-          <li><strong>endTimeInterval</strong> - controls the final transition speed. The shorter the interval, the faster the numbers will tick at the end of the animation.</li>
-          <li><strong>changeDecayRatio</strong> - controls how big the steps are when the number changes. With each step, the change is divided by this number. </li>
-        </ul>
-      </div>
+      <p>You can also change the animation speed</p>.
 
       <!-- form controls -->
       <div id="page-content">
         <div id="controls">
           <div class="slider">
-            <span>startTimeInterval</span>
-            <el-slider v-model="startTimeInterval" :min="0" :max="100"></el-slider>
+            <span>Animation Speed</span>
+            <el-slider v-model="speed" :min="1" :max="10"></el-slider>
           </div>
-          <div class="slider">
-            <span>endTimeInterval</span>
-            <el-slider v-model="endTimeInterval" :min="50" :max="400"></el-slider>
-          </div>
-          <div class="slider">
-            <span>changeDecayRatio</span>
-            <el-slider v-model="changeDecayRatio" :min="2" :max="10"></el-slider>
-          </div>
-          <el-input placeholder="Input a new value" v-model="editableValue"></el-input>
           <el-button type="primary" @click="updateValue()">Animate</el-button>
         </div>
         <!-- the animated number component -->
         <div id="animated-number">
-          <AnimatedNumber
-            :value='parseFloat(value)'
-            :startTimeInterval="startTimeInterval"
-            :endTimeInterval="endTimeInterval"
-            :changeDecayRatio="changeDecayRatio"
-          />
+          <AnimatedNumber :value='parseFloat(value)' :speed='speed'/>
         </div>
       </div>
     </el-main>
@@ -55,15 +34,12 @@ export default {
   data: function() {
     return {
       value: 0,
-      editableValue: 1324,
-      startTimeInterval: 40,
-      endTimeInterval: 170,
-      changeDecayRatio: 5
+      speed: 5,
     };
   },
   methods: {
     updateValue() {
-      this.value = this.editableValue;
+      this.value = Math.floor((Math.random() * 10000) + 0);
     }
   },
   mounted() {

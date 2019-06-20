@@ -31,24 +31,18 @@ export default {
       default: false
     },
 
-    // how much to decrease the change with every update
-    // since we divide by this number each time note that the
-    // decay in change will be logarithmic
-    'changeDecayRatio': {
+    // a number from 1 - 10 of how quickly to animate the changes
+    'speed': {
       type: Number,
-      default: 4
-    },
-
-    // minimum and maximum time update intervals
-    // we will go from minimum to maximum time at a rate scaled by
-    // the inverse of change
-    'startTimeInterval': {
-      type: Number,
-      default: 20
-    },
-    'endTimeInterval': {
-      type: Number,
-      default: 50
+      default: 5,
+      validator: function (value) {
+        if (value >= 1 && value <= 10) {
+          console.warn('Prop "speed" for component  "AnimatedNumber" needs to be an integer between 1 and 10')
+          return true
+        } else {
+          return false
+        }
+      }
     }
   },
 
@@ -64,6 +58,16 @@ export default {
   computed: {
     parsedValue: function () {
       return parseFloat(this.value)
+    },
+
+    // will range from 20 => 200
+    endTimeInterval: function () {
+      return 50 + 100 / this.speed
+    },
+
+    // will range from 2 => 20
+    changeDecayRatio: function () {
+      return 1 + (10 / this.speed)
     }
   },
 
@@ -90,7 +94,7 @@ export default {
 
         // timeout is minInterval plus the difference to max interval, scaled by the
         // inverse of change. Thus we will begin at minInterval and eventually reach maxInterval
-        let timeOut = this.startTimeInterval + (this.endTimeInterval - this.startTimeInterval) / change
+        let timeOut = 30 + (this.endTimeInterval - 30) / Math.abs(change)
         window.setTimeout(this.updateDisplayValue, timeOut)
       }
     }
@@ -107,7 +111,7 @@ export default {
   watch: {
     value: function () {
       if (isNaN(this.displayValue)) { this.displayValue = 0}
-      window.setTimeout(this.updateDisplayValue, this.startTimeInterval)
+      window.setTimeout(this.updateDisplayValue, 0)
       this.$emit('started-update')
     }
   }
